@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate /var/www/llm/data.json from the concept files in this repo."""
 import json, os, yaml
+from datetime import date
 
 REPO = os.path.dirname(os.path.abspath(__file__))
 WEB = "/var/www/llm"
@@ -8,6 +9,10 @@ WEB = "/var/www/llm"
 # Load progress
 with open(os.path.join(REPO, "progress.yaml")) as f:
     progress = yaml.safe_load(f)
+
+# Fix date serialization
+if isinstance(progress.get("start_date"), date):
+    progress["start_date"] = progress["start_date"].strftime("%Y-%m-%d")
 
 # Build concept list from the 100-concepts-full.md structure
 # For now, use the reference data
