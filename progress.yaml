@@ -1,7 +1,7 @@
 # LLM 100 Concepts Learning Progress
 start_date: 2026-05-25
-current_concept: 1
-current_tier: 1
+in_progress: 2
+next: Transformer
 
 tiers:
   1: "没有这些，LLM 不存在 (1-20)"
@@ -10,15 +10,12 @@ tiers:
   4: "LLM 怎么部署使用 (61-80)"
   5: "生态与应用 (81-100)"
 
-completed:
-  1:
+completed_list:
+  - id: 1
     name: Token
     definition: "Token = 大模型感知、计算、预测世界的最小单位"
     versions: 3
-    score: 10/10
-
-in_progress: 2
-next: Transformer
+    score: 10
 
 metrics:
   total: 100
