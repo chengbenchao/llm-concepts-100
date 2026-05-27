@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LLM 100 · 核心概念</title>
+<style>
+:root {
+  --bg: #080b12; --card: #0e111a; --border: #1a1f2e;
+  --text: #eceae5; --dim: #5c5650; --gold: #c4a34a;
+  --green: #10b981; --blue: #3b82f6; --purple: #8b5cf6;
+  --red: #ef4444; --orange: #f59e0b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.5}
+.hd{background:linear-gradient(135deg,#0f172a,#1a1f2e);border-bottom:1px solid var(--border);padding:16px 20px;position:sticky;top:0;z-index:10}
+.hd h1{font-size:1.1rem;font-weight:700}.hd .sub{font-size:.7rem;color:var(--dim);margin-top:2px}
+.bar{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.bar .stat{font-size:.65rem;padding:3px 10px;border-radius:12px;background:var(--card);border:1px solid var(--border)}
+.stat.done{border-color:var(--green);color:var(--green)}
+.stat.ing{border-color:var(--gold);color:var(--gold)}
+.stat.pend{border-color:var(--dim);color:var(--dim)}
+.pb-outer{height:3px;background:var(--border);border-radius:2px;margin-top:8px;overflow:hidden}
+.pb-inner{height:100%;background:linear-gradient(90deg,var(--green),var(--gold),var(--blue));border-radius:2px;transition:width .3s}
+.ct{padding:12px 16px;max-width:1200px;margin:0 auto}
+.tier-title{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:var(--dim);margin:16px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-1px);border-color:var(--gold);box-shadow:0 4px 12px rgba(196,163,74,0.1)}
+.card.completed{border-left:3px solid var(--green)}
+.card.in_progress{border-left:3px solid var(--gold);animation:pulse 2s infinite}
+.card.pending{border-left:3px solid transparent}
+@keyframes pulse{0%,100%{border-left-color:var(--gold)}50%{border-left-color:var(--orange)}}
+.card .num{font-size:.55rem;color:var(--dim);font-weight:600}
+.card .name{font-size:.7rem;font-weight:600;margin-top:2px}
+.card .name-cn{font-size:.6rem;color:var(--dim)}
+.card .status-dot{position:absolute;top:8px;right:8px;width:6px;height:6px;border-radius:50%}
+.status-dot.done{background:var(--green)}
+.status-dot.ing{background:var(--gold)}
+.status-dot.pend{background:var(--dim)}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;justify-content:center;align-items:center;padding:16px}
+.modal-overlay.active{display:flex}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;max-width:480px;width:100%;max-height:80vh;overflow-y:auto}
+.modal h3{font-size:1rem;margin-bottom:4px}.modal .tier-tag{font-size:.6rem;color:var(--gold);margin-bottom:12px}
+.modal .def-box{background:rgba(196,163,74,0.06);border-left:2px solid var(--gold);padding:10px 14px;border-radius:4px;margin:12px 0;font-size:.75rem;line-height:1.6}
+.modal .def-box.empty{color:var(--dim);font-style:italic}
+.modal .status-badge{font-size:.6rem;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:8px}
+.badge-done{background:rgba(16,185,129,0.15);color:var(--green)}
+.badge-ing{background:rgba(245,158,11,0.15);color:var(--orange)}
+.badge-pend{background:rgba(92,86,80,0.15);color:var(--dim)}
+.close-btn{margin-top:16px;padding:6px 16px;background:var(--border);border:none;color:var(--text);border-radius:6px;cursor:pointer;font-size:.7rem}
+.close-btn:hover{background:#2a3040}
+.ft{text-align:center;padding:20px;color:var(--dim);font-size:.65rem;border-top:1px solid var(--border);margin-top:20px}
+</style>
+</head>
+<body>
+<div class="hd">
+  <h1>🧠 LLM 100 · 核心概念</h1>
+  <div class="sub">大语言模型知识体系 · 费曼学习法 · 精炼定义</div>
+  <div class="bar">
+    <span class="stat done" id="stat-done">✅ 完成 0</span>
+    <span class="stat ing" id="stat-ing">🔄 学习中 0</span>
+    <span class="stat pend" id="stat-pend">⏳ 待学 0</span>
+  </div>
+  <div class="pb-outer"><div class="pb-inner" id="pb" style="width:0%"></div></div>
+</div>
+
+<div class="ct" id="content"></div>
+<div class="ft">LLM Concepts 100 · github.com/chengbenchao/llm-concepts-100 · 2026</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal" id="modal-body"></div>
+</div>
+
+<script>
+fetch('data.json').then(r=>r.json()).then(d=>{
+  const tiers = {1:'第一梯队：没有这些，LLM 不存在',2:'第二梯队：LLM 内部怎么工作',3:'第三梯队：LLM 怎么训练出来',4:'第四梯队：LLM 怎么部署使用',5:'第五梯队：生态与应用'};
+  const colors = {1:'var(--red)',2:'var(--orange)',3:'var(--blue)',4:'var(--purple)',5:'var(--green)'};
+
+  let done=0,ing=0,pend=0;
+  d.concepts.forEach(c=>{if(c.status==='completed')done++;else if(c.status==='in_progress')ing++;else pend++;});
+
+  document.getElementById('stat-done').textContent = `✅ 完成 ${done}`;
+  document.getElementById('stat-ing').textContent = `🔄 学习中 ${ing}`;
+  document.getElementById('stat-pend').textContent = `⏳ 待学 ${pend}`;
+  document.getElementById('pb').style.width = (done/d.total*100)+'%';
+
+  let html='';
+  for(let t=1;t<=5;t++){
+    let tierConcepts = d.concepts.filter(c=>c.tier===t);
+    if(tierConcepts.length===0) continue;
+    html += `<div class="tier-title" style="color:${colors[t]}">${tiers[t] || '第'+t+'梯队'} · ${tierConcepts.length} 个概念</div>`;
+    html += '<div class="grid">';
+    tierConcepts.forEach(c=>{
+      html += `<div class="card ${c.status}" onclick="openModal(${c.id})">
+        <div class="num">#${c.id}</div>
+        <div class="name">${c.name}</div>
+        <div class="name-cn">${c.name_cn}</div>
+        <div class="status-dot ${c.status==='completed'?'done':c.status==='in_progress'?'ing':'pend'}"></div>
+      </div>`;
+    });
+    html += '</div>';
+  }
+  document.getElementById('content').innerHTML = html;
+  window._data = d;
+});
+
+function openModal(id){
+  const c = window._data.concepts.find(x=>x.id===id);
+  if(!c)return;
+  const tiers={1:'第一梯队',2:'第二梯队',3:'第三梯队',4:'第四梯队',5:'第五梯队'};
+  const statusLabels={completed:'✅ 已完成',in_progress:'🔄 学习中',pending:'⏳ 待学习'};
+  const badgeClass={completed:'badge-done',in_progress:'badge-ing',pending:'badge-pend'};
+
+  document.getElementById('modal-body').innerHTML = `
+    <span class="status-badge ${badgeClass[c.status]}">${statusLabels[c.status]}</span>
+    <h3>#${c.id} · ${c.name}</h3>
+    <div style="font-size:.65rem;color:var(--dim)">${c.name_cn} · ${tiers[c.tier]}</div>
+    <p style="font-size:.75rem;margin-top:8px;color:var(--dim)">${c.desc}</p>
+    <div class="def-box ${c.definition?'':'empty'}">${c.definition || '精炼定义待学习...'}</div>
+    <button class="close-btn" onclick="document.getElementById('modal').classList.remove('active')">关闭</button>
+  `;
+  document.getElementById('modal').classList.add('active');
+}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('active');});
+</script>
+</body>
+</html>

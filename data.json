@@ -1,0 +1,909 @@
+{
+  "start_date": "2026-05-25",
+  "total": 100,
+  "completed": 2,
+  "in_progress": 0,
+  "current": 3,
+  "concepts": [
+    {
+      "id": 1,
+      "tier": 1,
+      "name": "Token",
+      "name_cn": "词元",
+      "desc": "LLM感知、计算、预测世界的最小单位",
+      "status": "completed",
+      "definition": "Token = 大模型感知、计算、预测世界的最小单位。LLM世界唯一的原子——输入用它、思考用它、输出用它。"
+    },
+    {
+      "id": 2,
+      "tier": 1,
+      "name": "Transformer",
+      "name_cn": "变换器",
+      "desc": "一种信息组织方式：所有节点同时直接对话，用可学习的权重决定谁听谁",
+      "status": "completed",
+      "definition": "Transformer 不是神经网络，是信息组织方式。传统组织（RNN）像层级公司——信息逐级上报，越远越模糊。Transformer 像创业公司——每个节点同时向所有节点提问（Query），匹配各自的专长标签（Key），按匹配度加权听取内容（Value）。八个注意力头就像八个专题小组并行开会。多层堆叠像多轮会议逐步形成共识。核心代价是 O(n²) 算力——但 GPU 的电费比信息损耗便宜，所以这是算力经济学的最优解。"
+    },
+    {
+      "id": 3,
+      "tier": 1,
+      "name": "Self-Attention",
+      "name_cn": "自注意力",
+      "desc": "让每个词同时看到所有其他词",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 4,
+      "tier": 1,
+      "name": "Parameters",
+      "name_cn": "参数",
+      "desc": "模型内部的可调旋钮",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 5,
+      "tier": 1,
+      "name": "Training",
+      "name_cn": "训练",
+      "desc": "让模型学会的过程，烧钱烧时间",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 6,
+      "tier": 1,
+      "name": "Inference",
+      "name_cn": "推理",
+      "desc": "每次问问题模型在跑的那几秒",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 7,
+      "tier": 1,
+      "name": "Pre-training",
+      "name_cn": "预训练",
+      "desc": "喂互联网级别文本，学会世界上有什么",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 8,
+      "tier": 1,
+      "name": "Context Window",
+      "name_cn": "上下文窗口",
+      "desc": "模型一次能记住多少内容",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 9,
+      "tier": 1,
+      "name": "Prompt",
+      "name_cn": "提示",
+      "desc": "你跟LLM之间的唯一接口",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 10,
+      "tier": 1,
+      "name": "Completion",
+      "name_cn": "补全",
+      "desc": "模型逐Token猜出来的回复",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 11,
+      "tier": 1,
+      "name": "Hallucination",
+      "name_cn": "幻觉",
+      "desc": "自信地编造不存在的事实",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 12,
+      "tier": 1,
+      "name": "Fine-tuning",
+      "name_cn": "微调",
+      "desc": "用高质量对话数据再训练的第二步",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 13,
+      "tier": 1,
+      "name": "RLHF",
+      "name_cn": "人类反馈强化学习",
+      "desc": "人类打分教模型什么是好回答",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 14,
+      "tier": 1,
+      "name": "Temperature",
+      "name_cn": "温度",
+      "desc": "控制输出随机性的旋钮",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 15,
+      "tier": 1,
+      "name": "Embedding",
+      "name_cn": "嵌入向量",
+      "desc": "把文字变成数字向量",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 16,
+      "tier": 1,
+      "name": "Loss Function",
+      "name_cn": "损失函数",
+      "desc": "训练时的错误计分器",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 17,
+      "tier": 1,
+      "name": "Gradient Descent",
+      "name_cn": "梯度下降",
+      "desc": "训练的数学引擎",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 18,
+      "tier": 1,
+      "name": "Tokenization",
+      "name_cn": "分词",
+      "desc": "把原始文本切成Token的过程",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 19,
+      "tier": 1,
+      "name": "Vocabulary",
+      "name_cn": "词表",
+      "desc": "模型认识的所有Token的集合",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 20,
+      "tier": 1,
+      "name": "GPU",
+      "name_cn": "图形处理器",
+      "desc": "训练和推理的物理硬件",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 21,
+      "tier": 2,
+      "name": "Multi-Head Attention",
+      "name_cn": "多头注意力",
+      "desc": "同时从多个维度关注不同信息",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 22,
+      "tier": 2,
+      "name": "Feed-Forward Network",
+      "name_cn": "前馈网络",
+      "desc": "注意力管理解关系，前馈管存储知识",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 23,
+      "tier": 2,
+      "name": "Layer Normalization",
+      "name_cn": "层归一化",
+      "desc": "把数值拉回稳定范围",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 24,
+      "tier": 2,
+      "name": "Residual Connection",
+      "name_cn": "残差连接",
+      "desc": "每层输入+输出，信息透传不丢",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 25,
+      "tier": 2,
+      "name": "Positional Encoding",
+      "name_cn": "位置编码",
+      "desc": "告诉模型每个词在第几位",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 26,
+      "tier": 2,
+      "name": "Decoder-only",
+      "name_cn": "仅解码器架构",
+      "desc": "GPT系采用的单向结构",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 27,
+      "tier": 2,
+      "name": "Autoregressive",
+      "name_cn": "自回归生成",
+      "desc": "一次一个Token，多米诺骨牌式生成",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 28,
+      "tier": 2,
+      "name": "Next Token Prediction",
+      "name_cn": "下一个词预测",
+      "desc": "LLM训练的唯一目标",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 29,
+      "tier": 2,
+      "name": "Probability Distribution",
+      "name_cn": "概率分布",
+      "desc": "不是选一个词，是每个词都有概率",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 30,
+      "tier": 2,
+      "name": "Top-K Sampling",
+      "name_cn": "Top-K采样",
+      "desc": "只从概率最高的K个里选",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 31,
+      "tier": 2,
+      "name": "Top-P Sampling",
+      "name_cn": "核采样",
+      "desc": "累积概率到P%为止的候选词里选",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 32,
+      "tier": 2,
+      "name": "Beam Search",
+      "name_cn": "束搜索",
+      "desc": "同时保留N条候选序列",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 33,
+      "tier": 2,
+      "name": "Logits",
+      "name_cn": "逻辑值",
+      "desc": "Softmax之前的原始数值",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 34,
+      "tier": 2,
+      "name": "Softmax",
+      "name_cn": "软最大化",
+      "desc": "把Logits变成概率分布",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 35,
+      "tier": 2,
+      "name": "Hidden State",
+      "name_cn": "隐藏状态",
+      "desc": "每层处理后的中间表示",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 36,
+      "tier": 2,
+      "name": "Model Depth",
+      "name_cn": "模型深度",
+      "desc": "Transformer层数，越深越抽象",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 37,
+      "tier": 2,
+      "name": "Model Width",
+      "name_cn": "模型宽度",
+      "desc": "隐藏状态维度，越宽知识越多",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 38,
+      "tier": 2,
+      "name": "KV Cache",
+      "name_cn": "键值缓存",
+      "desc": "推理加速的关键优化",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 39,
+      "tier": 2,
+      "name": "GQA/MQA",
+      "name_cn": "分组/多查询注意力",
+      "desc": "KV Cache的压缩变体",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 40,
+      "tier": 2,
+      "name": "Attention Mechanism",
+      "name_cn": "注意力机制",
+      "desc": "计算每个词对每个词的关联度",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 41,
+      "tier": 3,
+      "name": "Training Data",
+      "name_cn": "训练数据",
+      "desc": "模型吃的食物，质量决定能力上限",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 42,
+      "tier": 3,
+      "name": "Data Curation",
+      "name_cn": "数据策展",
+      "desc": "从海量数据中选出高质量部分",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 43,
+      "tier": 3,
+      "name": "Scaling Laws",
+      "name_cn": "扩展法则",
+      "desc": "更大模型+更多数据=可预测的更好性能",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 44,
+      "tier": 3,
+      "name": "Emergent Abilities",
+      "name_cn": "涌现能力",
+      "desc": "大到一定规模后突然出现的能力",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 45,
+      "tier": 3,
+      "name": "Overfitting",
+      "name_cn": "过拟合",
+      "desc": "背下训练数据但无法泛化",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 46,
+      "tier": 3,
+      "name": "Regularization",
+      "name_cn": "正则化",
+      "desc": "防止过拟合的技术集合",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 47,
+      "tier": 3,
+      "name": "Learning Rate",
+      "name_cn": "学习率",
+      "desc": "每次梯度下降的步长",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 48,
+      "tier": 3,
+      "name": "Optimizer",
+      "name_cn": "优化器",
+      "desc": "决定怎么用梯度更新参数",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 49,
+      "tier": 3,
+      "name": "Batch Size",
+      "name_cn": "批次大小",
+      "desc": "每次训练迭代处理多少样本",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 50,
+      "tier": 3,
+      "name": "Mixed Precision",
+      "name_cn": "混合精度训练",
+      "desc": "FP16+FP32，速度翻倍显存减半",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 51,
+      "tier": 3,
+      "name": "Distributed Training",
+      "name_cn": "分布式训练",
+      "desc": "几千张GPU同时训练",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 52,
+      "tier": 3,
+      "name": "Checkpoint",
+      "name_cn": "检查点",
+      "desc": "训练中定期保存的模型快照",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 53,
+      "tier": 3,
+      "name": "Epoch",
+      "name_cn": "训练轮数",
+      "desc": "模型完整遍历一次训练数据",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 54,
+      "tier": 3,
+      "name": "Perplexity",
+      "name_cn": "困惑度",
+      "desc": "衡量语言模型好坏的核心指标",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 55,
+      "tier": 3,
+      "name": "Benchmark",
+      "name_cn": "基准测试",
+      "desc": "评估LLM能力的标准化考试",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 56,
+      "tier": 3,
+      "name": "SFT",
+      "name_cn": "有监督微调",
+      "desc": "用问答对直接训练模型",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 57,
+      "tier": 3,
+      "name": "Reward Model",
+      "name_cn": "奖励模型",
+      "desc": "RLHF中间产物，预测人类打分",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 58,
+      "tier": 3,
+      "name": "PPO",
+      "name_cn": "近端策略优化",
+      "desc": "RLHF第三阶段的核心算法",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 59,
+      "tier": 3,
+      "name": "DPO",
+      "name_cn": "直接偏好优化",
+      "desc": "不需要奖励模型的RLHF替代方案",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 60,
+      "tier": 3,
+      "name": "Constitutional AI",
+      "name_cn": "宪法式AI",
+      "desc": "AI根据宪法原则自评自修",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 61,
+      "tier": 4,
+      "name": "Agent",
+      "name_cn": "智能体",
+      "desc": "LLM+工具+记忆+规划",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 62,
+      "tier": 4,
+      "name": "Function Calling",
+      "name_cn": "工具调用",
+      "desc": "LLM调用外部API的能力",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 63,
+      "tier": 4,
+      "name": "RAG",
+      "name_cn": "检索增强生成",
+      "desc": "先检索再回答，解决幻觉和过期",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 64,
+      "tier": 4,
+      "name": "Vector Database",
+      "name_cn": "向量数据库",
+      "desc": "存储和检索Embedding的专用DB",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 65,
+      "tier": 4,
+      "name": "Chunking",
+      "name_cn": "分块",
+      "desc": "RAG第一步：长文档切成小块",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 66,
+      "tier": 4,
+      "name": "System Prompt",
+      "name_cn": "系统提示",
+      "desc": "角色设定，整个对话中生效",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 67,
+      "tier": 4,
+      "name": "Few-Shot",
+      "name_cn": "少样本提示",
+      "desc": "给几个例子让模型学会模式",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 68,
+      "tier": 4,
+      "name": "Chain-of-Thought",
+      "name_cn": "思维链",
+      "desc": "一步步推理，正确率30%→80%",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 69,
+      "tier": 4,
+      "name": "JSON Mode",
+      "name_cn": "JSON模式",
+      "desc": "强制模型输出合法JSON",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 70,
+      "tier": 4,
+      "name": "Guardrails",
+      "name_cn": "护栏",
+      "desc": "约束模型行为的系统层机制",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 71,
+      "tier": 4,
+      "name": "Streaming",
+      "name_cn": "流式输出",
+      "desc": "逐Token实时推送给用户",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 72,
+      "tier": 4,
+      "name": "Quantization",
+      "name_cn": "量化",
+      "desc": "参数压缩，模型缩小4倍快3倍",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 73,
+      "tier": 4,
+      "name": "GGUF / GPTQ",
+      "name_cn": "量化格式",
+      "desc": "两种主流量化文件格式",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 74,
+      "tier": 4,
+      "name": "LoRA",
+      "name_cn": "低秩适配",
+      "desc": "高效微调，成本降低1000倍",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 75,
+      "tier": 4,
+      "name": "QLoRA",
+      "name_cn": "量化LoRA",
+      "desc": "4-bit量化+LoRA，消费级GPU微调70B",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 76,
+      "tier": 4,
+      "name": "Model Merging",
+      "name_cn": "模型合并",
+      "desc": "两个微调模型融合成一个",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 77,
+      "tier": 4,
+      "name": "Inference Engine",
+      "name_cn": "推理引擎",
+      "desc": "优化推理速度的运行时",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 78,
+      "tier": 4,
+      "name": "KV Cache Offloading",
+      "name_cn": "KV缓存卸载",
+      "desc": "长文本时KV Cache溢出到内存",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 79,
+      "tier": 4,
+      "name": "Speculative Decoding",
+      "name_cn": "推测性解码",
+      "desc": "小模型猜大模型验证，速度x3",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 80,
+      "tier": 4,
+      "name": "Batching",
+      "name_cn": "批处理",
+      "desc": "多请求打包处理，吞吐量飙升",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 81,
+      "tier": 5,
+      "name": "Open Source vs Proprietary",
+      "name_cn": "开源vs闭源",
+      "desc": "Llama vs GPT，差距快速缩小",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 82,
+      "tier": 5,
+      "name": "API vs Local",
+      "name_cn": "API vs 本地部署",
+      "desc": "按Token付费 vs 自己买GPU",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 83,
+      "tier": 5,
+      "name": "Multimodal",
+      "name_cn": "多模态",
+      "desc": "文字+图片+音频+视频统一处理",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 84,
+      "tier": 5,
+      "name": "Vision-Language Model",
+      "name_cn": "视觉语言模型",
+      "desc": "能看图回答问题的模型",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 85,
+      "tier": 5,
+      "name": "Speech / TTS",
+      "name_cn": "语音识别与合成",
+      "desc": "听和说的能力",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 86,
+      "tier": 5,
+      "name": "Model Distillation",
+      "name_cn": "模型蒸馏",
+      "desc": "大模型教小模型",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 87,
+      "tier": 5,
+      "name": "MoE",
+      "name_cn": "混合专家",
+      "desc": "671B总参数但每次只激活37B",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 88,
+      "tier": 5,
+      "name": "Prompt Injection",
+      "name_cn": "提示注入",
+      "desc": "攻击者往输入里藏恶意指令",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 89,
+      "tier": 5,
+      "name": "Jailbreak",
+      "name_cn": "越狱",
+      "desc": "绕过LLM安全限制",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 90,
+      "tier": 5,
+      "name": "Alignment",
+      "name_cn": "对齐",
+      "desc": "让AI目标和人类价值一致",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 91,
+      "tier": 5,
+      "name": "Red Teaming",
+      "name_cn": "红队测试",
+      "desc": "专业安全人员模拟攻击找漏洞",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 92,
+      "tier": 5,
+      "name": "Evaluation",
+      "name_cn": "评估",
+      "desc": "测量LLM有多好",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 93,
+      "tier": 5,
+      "name": "Token Economics",
+      "name_cn": "Token经济",
+      "desc": "一切成本的单位",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 94,
+      "tier": 5,
+      "name": "Rate Limit",
+      "name_cn": "速率限制",
+      "desc": "API调用上限和节流",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 95,
+      "tier": 5,
+      "name": "Prompt Caching",
+      "name_cn": "提示缓存",
+      "desc": "缓存重复Prompt，成本降90%",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 96,
+      "tier": 5,
+      "name": "LangChain / LlamaIndex",
+      "name_cn": "LLM应用框架",
+      "desc": "把LLM和各种工具串起来",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 97,
+      "tier": 5,
+      "name": "Orchestration",
+      "name_cn": "编排",
+      "desc": "多LLM调用组合成复杂工作流",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 98,
+      "tier": 5,
+      "name": "MCP",
+      "name_cn": "模型上下文协议",
+      "desc": "LLM和外部工具的USB-C协议",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 99,
+      "tier": 5,
+      "name": "Skill",
+      "name_cn": "技能",
+      "desc": "LLM能力的边界——定义不能干什么",
+      "status": "pending",
+      "definition": ""
+    },
+    {
+      "id": 100,
+      "tier": 5,
+      "name": "Hermes Agent",
+      "name_cn": "Hermes智能体",
+      "desc": "你现在对话的系统——Skill驱动的Agent",
+      "status": "pending",
+      "definition": ""
+    }
+  ]
+}

@@ -49,7 +49,7 @@ llm-concepts-100/
 
 | 已完成 | 学习中 | 待学习 |
 |--------|--------|--------|
-| Token (1) | Transformer (2) | 3-100 |
+| Token (1), Transformer (2) | Self-Attention (3) | 4-100 |
 
 ## 精炼定义
 
